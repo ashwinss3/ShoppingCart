@@ -143,8 +143,7 @@ With the current implementation, parallel addition of products can bring ambigui
 ## Notes
 
 - This project uses Django Rest Framework for building RESTful APIs.
-- Custom views and serializers are used to simulate RESTful API JSON responses instead of using Django Rest Framework.
-- Ensure proper authorization mechanisms are implemented in a production environment.
+- This project uses rest_framework_simplejwt module for authentication.
 
 
 This README provides instructions for setting up the project, details about available API endpoints, authentication method, and additional notes about the project's implementation. Adjustments can be made as necessary based on specific project details or additional features implemented.
