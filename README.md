@@ -48,3 +48,63 @@ and an order can contain multiple products. The relationship is maintained using
     The partial payment amounts can be decided based on the Products in the Order.
 
 
+
+### Business Logic/Validations
+#### Adding Products to an Order
+- Make sure availability is verified before adding products to an Order.
+- Update the price of the order when a product is added to the order.
+- (TBA) Ideally just add the products and the price of the products at that time. 
+And then add a separate API to get/calculate the price of the order using the products in order. 
+With the current implementation, parallel addition of products can bring ambiguity. 
+- (TBA) Make sure logged in user owns the order being edited currently.
+
+#### During Payment
+- Ensure the payment amount is matching the order amount.
+- (TBA) Allow partial payments.
+
+#### Post Payment Operations
+- On successful payment, update the quantities of products.
+- (TBA) Mark the order as Completed.
+- (TBA) In case of any unavailability of product, then mark order as failed, and refund the amount.
+
+
+
+## Usage
+
+### API Endpoints
+
+- **Users:**
+  - `GET /shopping_cart/users/`: List all users.
+  - `POST /shopping_cart/users/`: Create a new user.
+  - `GET /shopping_cart/users/<user_id>/`: Retrieve user details.
+  - `PUT /shopping_cart/users/<user_id>/`: Update user details.
+  - `DELETE /shopping_cart/users/<user_id>/`: Delete a user.
+
+- **Products:**
+  - `GET /shopping_cart/products/`: List all products.
+  - `POST /shopping_cart/products/`: Create a new product.
+  - `GET /shopping_cart/products/<product_id>/`: Retrieve product details.
+  - `PUT /shopping_cart/products/<product_id>/`: Update product details.
+  - `DELETE /shopping_cart/products/<product_id>/`: Delete a product.
+
+- **Orders:**
+  - `GET /shopping_cart/orders/`: List all orders.
+  - `POST /shopping_cart/orders/`: Place a new order.
+  - `GET /shopping_cart/orders/<order_id>/`: Retrieve order details.
+  - `PUT /shopping_cart/orders/<order_id>/`: Update order details.
+  - `DELETE /shopping_cart/orders/<order_id>/`: Cancel an order.
+  - `POST /shopping_cart/orderitems/`: Add products to an order.
+
+- **Payments:**
+  - `GET /shopping_cart/payments/`: List all payments.
+  - `POST /shopping_cart/payments/`: Make a new payment.
+  - `GET /shopping_cart/payments/<payment_id>/`: Retrieve payment details.
+  - `PUT /shopping_cart/payments/<payment_id>/`: Update payment details.
+  - `DELETE /shopping_cart/payments/<payment_id>/`: Cancel a payment.
+
+#### Improvement Points:
+- Add Pagination in all the List APIs.
+
+### Authentication
+
+Basic authentication is implemented using a static key check in the HTTP header.
