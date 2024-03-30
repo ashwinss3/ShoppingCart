@@ -3,6 +3,7 @@
 
 This project is a simple Django application for managing a shopping cart system with RESTful APIs.
 
+***
 ## Design 
 
 ### Models and Relations
@@ -47,7 +48,7 @@ and an order can contain multiple products. The relationship is maintained using
   - We could allow split payment for an order. 
     The partial payment amounts can be decided based on the Products in the Order.
 
-
+***
 
 ### Business Logic/Validations
 #### Adding Products to an Order
@@ -73,6 +74,7 @@ With the current implementation, parallel addition of products can bring ambigui
 - Make sure user is logged in while creating order. 
 - (TBA) Add authentication to all API related to order, and make sure the authenticated user is thr owner of the order.
 
+***
 
 ## Usage
 
@@ -110,7 +112,7 @@ With the current implementation, parallel addition of products can bring ambigui
 #### Improvement Points:
 - Add Pagination in all the List APIs.
 
-
+***
 
 ## Setup
 
@@ -139,6 +141,7 @@ With the current implementation, parallel addition of products can bring ambigui
    python manage.py runserver
    ```
 
+***
 
 ## Notes
 
