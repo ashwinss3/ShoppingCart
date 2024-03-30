@@ -5,7 +5,14 @@ from .models import User, Product, Order, OrderItem, Payment
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']  # Add more fields as needed
+        fields = ['id', 'username', 'email', 'password']  # Add more fields as needed
+        extra_kwargs = {'password': {'write_only': True}}  # Make 'password' field write-only
+
+    def create(self, validated_data):
+        # Extract and set the password before creating the user
+        password = validated_data.pop('password')
+        user = User.objects.create_user(**validated_data, password=password)
+        return user
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -45,7 +52,6 @@ class OrderItemSerializer(serializers.ModelSerializer):
         order.save()
 
         return order_item
-
 
 
 class OrderSerializer(serializers.ModelSerializer):

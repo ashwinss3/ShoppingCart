@@ -67,6 +67,11 @@ With the current implementation, parallel addition of products can bring ambigui
 - (TBA) Mark the order as Completed.
 - (TBA) In case of any unavailability of product, then mark order as failed, and refund the amount.
 
+### Authentication
+
+- Added JWT authentication using rest_framework_simplejwt module.
+- Make sure user is logged in while creating order. 
+- (TBA) Add authentication to all API related to order, and make sure the authenticated user is thr owner of the order.
 
 
 ## Usage
@@ -105,6 +110,41 @@ With the current implementation, parallel addition of products can bring ambigui
 #### Improvement Points:
 - Add Pagination in all the List APIs.
 
-### Authentication
 
-Basic authentication is implemented using a static key check in the HTTP header.
+
+## Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd django-shopping-cart-api
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Apply database migrations:
+   ```bash
+   python manage.py migrate
+   ```
+
+5. Run the development server:
+   ```bash
+   python manage.py runserver
+   ```
+
+
+## Notes
+
+- This project uses Django Rest Framework for building RESTful APIs.
+- Custom views and serializers are used to simulate RESTful API JSON responses instead of using Django Rest Framework.
+- Ensure proper authorization mechanisms are implemented in a production environment.
+
+
+This README provides instructions for setting up the project, details about available API endpoints, authentication method, and additional notes about the project's implementation. Adjustments can be made as necessary based on specific project details or additional features implemented.

@@ -32,8 +32,8 @@ class Product(BaseModel):
 class Order(BaseModel):
     # More fields can be added like order status, timestamps, etc.
 
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, default=None)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return f"Order #{self.id} by {self.user.username}"
