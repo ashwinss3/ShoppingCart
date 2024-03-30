@@ -68,7 +68,7 @@ With the current implementation, parallel addition of products can bring ambigui
 - (TBA) Mark the order as Completed.
 - (TBA) In case of any unavailability of product, then mark order as failed, and refund the amount.
 
-### Authentication
+#### Authentication
 
 - Added JWT authentication using rest_framework_simplejwt module.
 - Make sure user is logged in while creating order. 
