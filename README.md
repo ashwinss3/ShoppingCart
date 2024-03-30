@@ -118,12 +118,12 @@ With the current implementation, parallel addition of products can bring ambigui
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ashwinss3/ShoppingCart.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd django-shopping-cart-api
+   cd ShoppingCart
    ```
 
 3. Install dependencies:
@@ -133,7 +133,7 @@ With the current implementation, parallel addition of products can bring ambigui
 
 4. Apply database migrations:
    ```bash
-   python manage.py migrate
+   python manage.py makemigrations && python manage.py migrate
    ```
 
 5. Run the development server:
