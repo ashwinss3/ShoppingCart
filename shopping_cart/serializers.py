@@ -48,7 +48,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
         # Update the price of the order
         order = order_item.order
-        order.total_price += price
+        order.total_amount += price
         order.save()
 
         return order_item
@@ -68,15 +68,15 @@ class PaymentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     @staticmethod
-    def update_order_quantities(order):
+    def update_product_quantities(order):
         """
         Update product quantities in the order after payment.
         """
-        order_items = order.orderitem_set.all()
+        order_items = order.order_items.all()
 
         for order_item in order_items:
             product = order_item.product
-            product.stock -= order_item.quantity
+            product.available_quantity -= order_item.quantity
             product.save()
 
     def create(self, validated_data):
@@ -90,7 +90,7 @@ class PaymentSerializer(serializers.ModelSerializer):
 
         # Check if payment status is 'completed'
         # Update product quantities in the order
-        self.update_order_quantities(order)
+        self.update_product_quantities(order)
 
         return payment
 
@@ -99,10 +99,11 @@ class PaymentSerializer(serializers.ModelSerializer):
         Validate product quantity.
         """
         order = data.get('order')
-        payment_amount = data.get('order')
+        amount_paid = data.get('amount_paid')
 
         if order:
-            if order.total_amount > payment_amount:
+            # Ideal decimal to float comparison is more complicated. That can be implemented if required.
+            if float(order.total_amount) > amount_paid:
                 raise serializers.ValidationError("Payment amount less than order amount.")
 
         return data
