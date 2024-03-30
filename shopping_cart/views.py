@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# views.py
 from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
 

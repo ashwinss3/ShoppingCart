@@ -9,8 +9,6 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-
-
 urlpatterns = [
     path('users/', UserListCreate.as_view(), name='user-list-create'),
     path('users/<int:pk>/', UserRetrieveUpdateDestroy.as_view(), name='user-retrieve-update-destroy'),

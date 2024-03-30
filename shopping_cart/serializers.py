@@ -106,4 +106,3 @@ class PaymentSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Payment amount less than order amount.")
 
         return data
-
